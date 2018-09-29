@@ -16,7 +16,7 @@ var port = process.env.PORT;
 var app = (0, _express.default)();
 app.set('view engine', 'ejs'); // npm i ejs
 
-app.use("/public", _express.default.static(__dirname + '/public'));
+app.use("/public", _express.default.static(__dirname + '/../public'));
 app.use(_express.default.json()); //Built-in Middleware (instead of body-parser)
 
 app.use(_express.default.urlencoded()); //html form : key=value&key=vale

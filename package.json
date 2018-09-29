@@ -4,7 +4,7 @@
   "description": "note taking application using express and RESTful",
   "main": "dist/app.js",
   "scripts": {
-    "start":"node dist/app.js",
+    "start": "node dist/app.js",
     "build": "babel -w . --ignore node_modules,public,dist -d dist",
     "start:babel": "nodemon --exec babel-node app.js",
     "startNote": "node --exec babel-node controller/Note.js",
