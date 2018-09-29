@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "tag": "HTML"
+  },
+  {
+    "id": "2",
+    "tag": "CSS"
+  },
+  {
+    "id": "3",
+    "tag": "ECMAScript"
+  },
+  {
+    "id": "4",
+    "tag": "Node.js"
+  },
+  {
+    "id": "5",
+    "tag": "MongoDB"
+  },
+  {
+    "id": "6",
+    "tag": "React"
+  }
+]

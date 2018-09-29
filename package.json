@@ -1,0 +1,49 @@
+{
+  "name": "note_taking_app",
+  "version": "1.0.0",
+  "description": "note taking application using express and RESTful",
+  "main": "app.js",
+  "scripts": {
+    "start":"node dist/app.js",
+    "build": "babel -w . --ignore node_modules,views,dist,models -d dist",
+    "start:babel": "nodemon --exec babel-node app.js",
+    "startNote": "node --exec babel-node controller/Note.js",
+    "serve": "node dist/app.js",
+    "parcel:build": "parcel build public/src/app.js -d public/dist",
+    "parcel:watch": "parcel watch public/src/app.js -d public/dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zuhairtaha/NoteTakingApp.git"
+  },
+  "keywords": [
+    "express",
+    "restful",
+    "api",
+    "hack",
+    "your",
+    "future"
+  ],
+  "author": "zuhair taha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zuhairtaha/NoteTakingApp/issues"
+  },
+  "homepage": "https://github.com/zuhairtaha/NoteTakingApp#readme",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "jquery": "^3.3.1",
+    "materialize-css": "^1.0.0-rc.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.0",
+    "@babel/core": "^7.1.0",
+    "@babel/node": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "cssnano": "^4.1.4",
+    "dotenv": "^6.0.0",
+    "sass": "^1.14.1"
+  }
+}

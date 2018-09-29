@@ -1,0 +1,44 @@
+<!-- Modal Structure -->
+<div id="edit-note-modal" class="modal">
+    <div class="modal-header red accent-2">
+        <h4 class="white-text"><i class="material-icons prefix">create</i> Edit a note</h4>
+    </div>
+    <div class="modal-content">
+
+
+        <div class="row">
+
+            <div class="row">
+                <!-- title -->
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">chat</i>
+                    <input id="note-title-edit" type="text" class="validate">
+                    <label for="note-title-edit">Title</label>
+                </div>
+
+                <!-- content -->
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">mode_edit</i>
+                    <textarea id="note-content-edit" class="materialize-textarea"></textarea>
+                    <label for="note-content-edit">Content</label>
+                </div>
+            </div>
+
+
+            <div class="row tags-row" id="tags-row-edit">
+                <!-- tags will be rendering here -->
+            </div>
+
+
+
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button id="edit-note-button" class="btn waves-effect waves-light red"
+                type="submit" name="action">Save
+            <i class="material-icons right">save</i>
+        </button>
+    </div>
+</div>
+

@@ -1,0 +1,47 @@
+<!-- Modal Trigger -->
+<!-- <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a> -->
+
+<!-- Modal Structure -->
+<div id="add-note-modal" class="modal">
+    <div class="modal-header red accent-2">
+        <h4 class="white-text"><i class="material-icons prefix">add</i> Add new note</h4>
+    </div>
+    <div class="modal-content">
+
+
+        <div class="row">
+
+            <div class="row">
+                <!-- title -->
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">chat</i>
+                    <input id="note-title" type="text" class="validate">
+                    <label for="note-title">Title</label>
+                </div>
+
+                <!-- content -->
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">mode_edit</i>
+                    <textarea id="note-content" class="materialize-textarea"></textarea>
+                    <label for="note-content">Content</label>
+                </div>
+            </div>
+
+
+            <div class="row tags-row" id="tags-row-add">
+                <!-- tags will be rendering here -->
+            </div>
+
+
+
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button id="submit-new-note" class="btn waves-effect waves-light red"
+                type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+        </button>
+    </div>
+</div>
+

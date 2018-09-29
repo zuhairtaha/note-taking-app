@@ -1,0 +1,43 @@
+<!-- API Dropdown Structure -->
+<ul id="API-dropdown" class="dropdown-content">
+    <li><a class="black-text" href="/api/tags">tags</a></li>
+    <li class="divider"></li>
+    <li><a class="black-text" href="/api/notes">notes</a></li>
+    <li class="divider"></li>
+    <li><a class="black-text" href="/api/notes/1">note/1</a></li>
+</ul>
+
+
+<nav class="red darken-4">
+    <!--  Navbar structure, visible on desktop -->
+    <div class="nav-wrapper container">
+        <!--  Trigger sidenav  -->
+        <a href="javascript:void(0)" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <!-- Brand Logo -->
+        <a href="/" class="brand-logo">
+            <img style="height: auto" src="/public/src/img/logo2.png"/>
+        </a>
+
+
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="#notes-bar">
+                    <i class="material-icons left">home</i>Home
+                </a>
+            </li>
+            <li><a href="#notes-bar" class="scroll-to-notes">
+                    <i class="material-icons left">event_note</i>Notes
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-trigger" href="#!"
+                   data-target="API-dropdown">API
+                    <i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+
+    <!--  Sidenav structure, visible on tablet and mobile  -->
+    <%- include("nav-mobile") %>
+</nav>
