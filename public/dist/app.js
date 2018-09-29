@@ -186,145 +186,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"C:/Users/Zuhair/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/parallax.js":[function(require,module,exports) {
-// https://codepen.io/leninalberto/pen/aGzwre
-//import $ from "jquery"
-
-/*
- import {defaultExport as $, defaultExport as jQuery} from 'jquery';
- import M from "materialize-css"
-
- M.AutoInit()
-
- $(() => {
- $('.parallax').parallax()
- $(".button-collapse").sideNav()
- })*/
-M.AutoInit();
-var elem = document.querySelector('.sidenav');
-M.Sidenav.init(elem, {
-  inDuration: 350,
-  outDuration: 350,
-  edge: 'right'
-}); //M.parallax(document.querySelector('.button-collapse'))
-},{}],"js/scrollTo.js":[function(require,module,exports) {
-function scrollIt(element) {
-  window.scrollTo({
-    'behavior': 'smooth',
-    'left': 0,
-    'top': element.offsetTop
-  });
-}
-
-document.querySelectorAll('.scroll-to-notes').forEach(function (button) {
-  button.addEventListener('click', function (e) {
-    e.preventDefault();
-    scrollIt(document.querySelector('#notes-bar'));
-  });
-});
-},{}],"js/renderTags.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.renderTagsPromise = renderTagsPromise;
-
-function renderTags(tags) {
-  var tagsRowContent = '';
-  tags.forEach(function (tag) {
-    tagsRowContent += "\n            <div class=\"col s4\">\n                <label>\n                    <input type=\"checkbox\" name=\"selectedTags\" value=\"".concat(tag.id, "\"/>\n                    <span>").concat(tag.tag, "</span>\n                </label>\n            </div>\n        ");
-  });
-  document.querySelectorAll('.tags-row').forEach(function (tagsRow) {
-    tagsRow.innerHTML = tagsRowContent;
-  });
-  return tagsRowContent;
-} // --------------------------
-
-/**
- * render tags and return promise
- * @returns {Promise}
- */
-
-
-function renderTagsPromise() {
-  return new Promise(function (resolve) {
-    return fetch('/api/tags').then(function (data) {
-      return data.json();
-    }).then(function (tags) {
-      renderTags(tags);
-      return resolve();
-    });
-  });
-}
-},{}],"js/renderNotes.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.renderNotesPromise = renderNotesPromise;
-exports.getNoteTags = getNoteTags;
-exports.tagsPromise = void 0;
-// ============ promises =================
-// note promise
-var notesPromise = new Promise(function (resolve) {
-  fetch('/api/notes').then(function (data) {
-    return data.json();
-  }).then(function (notes) {
-    return resolve(notes);
-  });
-}); // tags promise
-
-var tagsPromise = new Promise(function (resolve) {
-  fetch('/api/tags').then(function (data) {
-    return data.json();
-  }).then(function (tags) {
-    return resolve(tags);
-  });
-}); // handle all promises
-
-exports.tagsPromise = tagsPromise;
-
-function renderNotesPromise() {
-  return Promise.all([notesPromise, tagsPromise]).then(function (data) {
-    return renderNotes(data[0], data[1]);
-  });
-} // --------------------------
-
-/**
- * get tags for a note
- * @param {Array} tagsArray
- * @param {Array} allTags
- * @returns {string}
- */
-
-
-function getNoteTags(tagsArray, allTags) {
-  return allTags.filter(function (tag) {
-    return tagsArray.includes(tag.id);
-  }).map(function (tag) {
-    return "<span class=\"badge grey lighten-3 tag-span\">\n                        <i class=\"material-icons tiny\">local_offer</i>\n                        ".concat(tag.tag, "\n                      </span>");
-  }).join(" ");
-} // --------------------------
-
-/**
- * render all notes
- * @param {Array}notes
- * @param {Array} tags
- */
-
-
-function renderNotes(notes, tags) {
-  var notesTbodyContent = '';
-  notes.forEach(function (note, index) {
-    notesTbodyContent += "\n            <tr>\n                <td>".concat(index + 1, "</td>\n                <td>").concat(note.title, "</td>\n                <td>").concat(getNoteTags(note.tags, tags), "</td>\n                <td data-index=\"").concat(index, "\" class=\"control-buttons\">\n                \n                    <a class=\"btn red delete-note-button\">\n                        <i class=\"material-icons\">delete</i>\n                    </a>\n                    \n                    <a class=\"btn orange edit-note-button\">\n                        <i class=\"material-icons\">mode_edit</i>\n                    </a>\n                    \n                    <a class=\"btn blue modal-trigger view-note-button\" \n                        href=\"#view-note-modal\">\n                        <i class=\"material-icons\">remove_red_eye</i>\n                    </a>\n                    \n                </td>\n            </tr>\n        ");
-  });
-  var notesTbody = document.querySelector('#notes-tbody');
-  notesTbody.innerHTML = notesTbodyContent;
-  return notesTbody;
-}
-},{}],"libs/materialize_1.0/js/bin/materialize.js":[function(require,module,exports) {
+},{"_css_loader":"C:/Users/Zuhair/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"libs/materialize_1.0/js/bin/materialize.js":[function(require,module,exports) {
 var define;
 var global = arguments[3];
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -13249,6 +13111,150 @@ var $jscomp$this = this;
 
   Range.init($('input[type=range]'));
 })(cash, M.anime);
+},{}],"js/parallax.js":[function(require,module,exports) {
+"use strict";
+
+var M = _interopRequireWildcard(require("../libs/materialize_1.0/js/bin/materialize"));
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+// https://codepen.io/leninalberto/pen/aGzwre
+//import $ from "jquery"
+
+/*
+ import {defaultExport as $, defaultExport as jQuery} from 'jquery';
+ import M from "materialize-css"
+
+ M.AutoInit()
+
+ $(() => {
+ $('.parallax').parallax()
+ $(".button-collapse").sideNav()
+ })*/
+M.AutoInit();
+var elem = document.querySelector('.sidenav');
+M.Sidenav.init(elem, {
+  inDuration: 350,
+  outDuration: 350,
+  edge: 'right'
+}); //M.parallax(document.querySelector('.button-collapse'))
+},{"../libs/materialize_1.0/js/bin/materialize":"libs/materialize_1.0/js/bin/materialize.js"}],"js/scrollTo.js":[function(require,module,exports) {
+function scrollIt(element) {
+  window.scrollTo({
+    'behavior': 'smooth',
+    'left': 0,
+    'top': element.offsetTop
+  });
+}
+
+document.querySelectorAll('.scroll-to-notes').forEach(function (button) {
+  button.addEventListener('click', function (e) {
+    e.preventDefault();
+    scrollIt(document.querySelector('#notes-bar'));
+  });
+});
+},{}],"js/renderTags.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.renderTagsPromise = renderTagsPromise;
+
+function renderTags(tags) {
+  var tagsRowContent = '';
+  tags.forEach(function (tag) {
+    tagsRowContent += "\n            <div class=\"col s4\">\n                <label>\n                    <input type=\"checkbox\" name=\"selectedTags\" value=\"".concat(tag.id, "\"/>\n                    <span>").concat(tag.tag, "</span>\n                </label>\n            </div>\n        ");
+  });
+  document.querySelectorAll('.tags-row').forEach(function (tagsRow) {
+    tagsRow.innerHTML = tagsRowContent;
+  });
+  return tagsRowContent;
+} // --------------------------
+
+/**
+ * render tags and return promise
+ * @returns {Promise}
+ */
+
+
+function renderTagsPromise() {
+  return new Promise(function (resolve) {
+    return fetch('/api/tags').then(function (data) {
+      return data.json();
+    }).then(function (tags) {
+      renderTags(tags);
+      return resolve();
+    });
+  });
+}
+},{}],"js/renderNotes.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.renderNotesPromise = renderNotesPromise;
+exports.getNoteTags = getNoteTags;
+exports.tagsPromise = void 0;
+// ============ promises =================
+// note promise
+var notesPromise = new Promise(function (resolve) {
+  fetch('/api/notes').then(function (data) {
+    return data.json();
+  }).then(function (notes) {
+    return resolve(notes);
+  });
+}); // tags promise
+
+var tagsPromise = new Promise(function (resolve) {
+  fetch('/api/tags').then(function (data) {
+    return data.json();
+  }).then(function (tags) {
+    return resolve(tags);
+  });
+}); // handle all promises
+
+exports.tagsPromise = tagsPromise;
+
+function renderNotesPromise() {
+  return Promise.all([notesPromise, tagsPromise]).then(function (data) {
+    return renderNotes(data[0], data[1]);
+  });
+} // --------------------------
+
+/**
+ * get tags for a note
+ * @param {Array} tagsArray
+ * @param {Array} allTags
+ * @returns {string}
+ */
+
+
+function getNoteTags(tagsArray, allTags) {
+  return allTags.filter(function (tag) {
+    return tagsArray.includes(tag.id);
+  }).map(function (tag) {
+    return "<span class=\"badge grey lighten-3 tag-span\">\n                        <i class=\"material-icons tiny\">local_offer</i>\n                        ".concat(tag.tag, "\n                      </span>");
+  }).join(" ");
+} // --------------------------
+
+/**
+ * render all notes
+ * @param {Array}notes
+ * @param {Array} tags
+ */
+
+
+function renderNotes(notes, tags) {
+  var notesTbodyContent = '';
+  notes.forEach(function (note, index) {
+    notesTbodyContent += "\n            <tr>\n                <td>".concat(index + 1, "</td>\n                <td>").concat(note.title, "</td>\n                <td>").concat(getNoteTags(note.tags, tags), "</td>\n                <td data-index=\"").concat(index, "\" class=\"control-buttons\">\n                \n                    <a class=\"btn red delete-note-button\">\n                        <i class=\"material-icons\">delete</i>\n                    </a>\n                    \n                    <a class=\"btn orange edit-note-button\">\n                        <i class=\"material-icons\">mode_edit</i>\n                    </a>\n                    \n                    <a class=\"btn blue modal-trigger view-note-button\" \n                        href=\"#view-note-modal\">\n                        <i class=\"material-icons\">remove_red_eye</i>\n                    </a>\n                    \n                </td>\n            </tr>\n        ");
+  });
+  var notesTbody = document.querySelector('#notes-tbody');
+  notesTbody.innerHTML = notesTbodyContent;
+  return notesTbody;
+}
 },{}],"js/CRUD-note.js":[function(require,module,exports) {
 "use strict";
 
@@ -13482,7 +13488,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "9027" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "24910" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

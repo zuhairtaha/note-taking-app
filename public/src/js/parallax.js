@@ -11,6 +11,7 @@
  $('.parallax').parallax()
  $(".button-collapse").sideNav()
  })*/
+ import * as M from "../libs/materialize_1.0/js/bin/materialize"
 M.AutoInit();
 var elem = document.querySelector('.sidenav')
 M.Sidenav.init(elem, {

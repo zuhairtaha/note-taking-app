@@ -11,7 +11,7 @@ var _NotesAPI = require("./routes/NotesAPI");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //import {} from 'dotenv/config'
-var port = process.env.PORT;
+var port = process.env.PORT | 8888;
 var app = (0, _express.default)();
 app.set('view engine', 'ejs'); // npm i ejs
 
